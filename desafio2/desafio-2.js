@@ -35,11 +35,10 @@ class Contenedor{
             let data = await fs.promises.readFile(this.fileName, 'utf-8')
             let products = JSON.parse(data)
 
-
             let getId = products.find(products => products.id == id)
             return console.log(getId)
         }catch {
-            return console.log("null")
+            console.log("3rror")
         }
     }
 
@@ -59,12 +58,10 @@ class Contenedor{
             let data = await fs.promises.readFile(this.fileName,'utf-8')
             let products = JSON.parse(data)
     
-            if(id) {
-                let newProducts = products.filter(products=>products.id !== id)
-                await fs.promises.writeFile(this.fileName, JSON.stringify(newProducts, null, "\t"))
-            }
+            let newProducts = products.filter(products=>products.id !== id)
+            await fs.promises.writeFile(this.fileName, JSON.stringify(newProducts, null, "\t"))
         }catch{
-            console.error("\nEL ID INGRESADO NO EXISTE\n")
+            return console.error("\nHay un error\n")
         }
     }
 
@@ -73,7 +70,7 @@ class Contenedor{
         try{
             await fs.promises.writeFile(this.fileName,'[]')
         }catch{
-            console.log("No se pudo eliminar el array")
+            console.log("Hubo un error")
         }
     }
 }
@@ -84,15 +81,7 @@ const producto1 = new Product("celular", 10000, "imagen")
 const producto2 = new Product("zapatilas", 5000000, "gg")
 
 // contenedor1.save(producto1)
-// contenedor1.save(producto2)
-
-// console.log(contenedor1.getById(4))
-// console.log(contenedor1.getAll())
-// contenedor1.deleteById(3)
-// console.log(contenedor1.getAll())
-
+// contenedor1.getById(3)
+contenedor1.getAll()
+// contenedor1.deleteById(4)
 // contenedor1.deleteAll()
-
-
-let a =contenedor1.getById(7)
-// console.log(a)
