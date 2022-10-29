@@ -1,4 +1,4 @@
-const fs = require("fs")
+import fs from 'fs'
 
 class Product{
     constructor(title, price, thumbnail){
@@ -25,7 +25,7 @@ class Contenedor{
             await fs.promises.writeFile(this.fileName, JSON.stringify(products, null, "\t"))
             return console.log("El id asignado es: "+obj.id)
         }catch{
-            console.log("Hubo un error")
+            console.log("Hubo un error SAVE")
         }
     }
 
@@ -38,17 +38,18 @@ class Contenedor{
             let getId = products.find(products => products.id == id)
             return console.log(getId)
         }catch {
-            console.log("3rror")
+            console.log("3rror GETBYID")
         }
     }
 
     getAll = async ()=>{
         // Object[] - Devuelve un array con los objetos presentes en el archivo.
         try{
-            let data = await fs.promises.readFile(this.fileName,'utf-8')
-            return console.log(JSON.parse(data))
+            let data = await fs.promises.readFile(this.fileName, "utf-8")
+            let prod = JSON.parse(data)
+            return prod
         }catch{
-            console.log("Hubo un error");
+            console.log("Hubo un error GETALL");
         }
     }
 
@@ -61,7 +62,7 @@ class Contenedor{
             let newProducts = products.filter(products=>products.id !== id)
             await fs.promises.writeFile(this.fileName, JSON.stringify(newProducts, null, "\t"))
         }catch{
-            return console.error("\nHay un error\n")
+            return console.error("\nHay un error DELETEID\n")
         }
     }
 
@@ -70,18 +71,22 @@ class Contenedor{
         try{
             await fs.promises.writeFile(this.fileName,'[]')
         }catch{
-            console.log("Hubo un error")
+            console.log("Hubo un error DELETEALL")
         }
     }
 }
 
-const contenedor1 = new Contenedor("./productos.json")
+// const contenedor1 = new Contenedor("./productos.json")
 
-const producto1 = new Product("celular", 10000, "imagen")
-const producto2 = new Product("zapatilas", 5000000, "gg")
+// const producto1 = new Product("celular", 10000, "imagen")
+// const producto2 = new Product("zapatilas", 5000000, "gg")
 
-// contenedor1.save(producto1)
+// contenedor1.save(producto2)
 // contenedor1.getById(3)
-contenedor1.getAll()
+// contenedor1.getAll()
 // contenedor1.deleteById(4)
 // contenedor1.deleteAll()
+
+// console.log(contenedor1.getAll())
+
+export default Contenedor;
