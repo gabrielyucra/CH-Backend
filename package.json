@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "desafio4",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,18 +7,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gabrielyucra/CH-Backend.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gabrielyucra/CH-Backend/issues"
-  },
-  "homepage": "https://github.com/gabrielyucra/CH-Backend#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^2.0.20"
   }
 }
