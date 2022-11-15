@@ -37,7 +37,7 @@ class Contenedor{
             let products = JSON.parse(data)
 
             let getId = products.find(products => products.id == id)
-            return console.log(getId)
+            return getId
         }catch {
             console.log("3rror GETBYID")
         }
@@ -73,6 +73,43 @@ class Contenedor{
             await fs.promises.writeFile(this.fileName,'[]')
         }catch{
             console.log("Hubo un error DELETEALL")
+        }
+    }
+
+    updateItem = async (obj, id) => {
+        let products = await this.getAll()
+        try {
+            let arrayProducts = products.map(product => {
+                if (product.id == id) {
+                    return {
+                        id: product.id,
+                        title: obj.title ? obj.title : product.title,
+                        price: obj.price ? obj.price : product.price,
+                        img: obj.img ? obj.img : product.img
+                    }
+                } else {
+                    return product
+                }
+            })
+            let productUpdate = arrayProducts.find(product => product.id == id)
+            if (productUpdate) {
+                await fs.promises.writeFile(this.fileName, JSON.stringify(arrayProducts, null, 2))
+                return {
+                    status: "success",
+                    message: "successfully upgraded product",
+                    productNew: productUpdate
+                }
+            } else {
+                return {
+                    status: "error",
+                    message: "Product not found"
+                }
+            }
+        } catch {
+            return {
+                status: "error",
+                message: "It's not possible to update the product"
+            }
         }
     }
 
