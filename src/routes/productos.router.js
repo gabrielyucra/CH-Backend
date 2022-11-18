@@ -6,7 +6,7 @@ const router = Router()
 let contenedor3 = new Contenedor("./productos.json")
 
 router.get('/gg', (req, res)=>{
-    res.send("ss")
+    res.render("ss")
 })
 
 
