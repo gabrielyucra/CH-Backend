@@ -19,15 +19,12 @@ app.set('view enigine', 'handlebars') // Mi ("motor de plantillas", va a ser 'no
 
 app.use(express.json())// Le indico q quiero trabajar cn la estructura JSON//
 app.use(express.urlencoded({extended:true}))// puede procesar datos mas complejos en la URL mas que nums, strings
-// app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/public'))
 
 let contenedor2 = new Contenedor("./productos.json")
 
 app.use('/api/productos', Router)
 app.use('/', viewsRouter)
-
-
-
 
 
 

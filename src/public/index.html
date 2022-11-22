@@ -4,16 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style/css.css">
     <title>Document</title>
 </head>
 <body>
-    <form id="formProducts">
-        <input type="text" placeholder="titulo" name="title">
-        <input type="number" placeholder="precio" name="price">
-        <input type="text" placeholder="imagen" name="img">
-        <button type="submit">Enviar</button>
+    <h1 class="text-center mt-5 mb-5">Agregue un producto</h1>
+
+    <form class="col container" id="formProducts">
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Titulo" name="title">
+            </div>
+            <div class="col">
+                <input type="number" class="form-control" placeholder="Precio" name="price">
+            </div>
+            <div class="col">
+                <input type="file" class="form-control" placeholder="imagen" name="img">
+            </div>
+            <div class="col">
+                <button class="btn btn-primary" type="submit">Enviar</button>
+            </div>
+            <button class="btn btn-success col" type="button">
+                <a href="/productos">Ver productos</a> 
+            </button>
+        </div>
     </form>
 
-    <script src="./js/script.js"></script>
+    <script src="./js/index.js"></script>
 </body>
 </html>

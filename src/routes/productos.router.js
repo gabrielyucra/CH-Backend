@@ -1,5 +1,6 @@
 import {Router} from 'express'
 import Contenedor from '../contenedor.js'
+import { uploader } from '../utils.js'
 
 const router = Router()
 
@@ -29,14 +30,20 @@ router.get('/:id',async (req,res)=>{   //-------------> DEVUELVE 1 PRODUCTO SEGU
     res.send(obj)
 })
 
-router.post('/',async (req,res)=>{   //-------------> recibe y agrega un producto, y lo devuelve con su idasignado.
+router.post('/',uploader.single("img"), async (req,res)=>{   //-------------> recibe y agrega un producto, y lo devuelve con su idasignado.
     const {title, price, img} = req.body;
+    // if(!title || !price || !img) res.status(400).send({status:"error", error:"campos incompletos"})
     const product = {
         title,
         price,
         img
     }
-    contenedor3.save(product)
+    // console.log(req.file)
+    const newImage = req.protocol+"://"+req.hostname+':8080/img/'+req.file.filename;
+                    //HTTPS      + ://+ LOCALHOST O SERVER+8080 +   NOMBRE NUEVO DE ARCHIVO 
+    product.img = newImage
+    await contenedor3.save(product)
+    res.redirect('/');
     res.send({status:"success",payload:product});
 })
 

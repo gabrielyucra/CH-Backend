@@ -7,7 +7,7 @@ const __dirname = dirname(__filename);
 
 const storage = multer.diskStorage({       // Se almacena en nuestro proyecto 
     destination:function(req,file,cb){
-        cb(null,__dirname+'/public/imag') //  Donde quiero que se guarde, el destino
+        cb(null,__dirname+'/public/img') //  Donde quiero que se guarde, el destino
     },
     filename:function(req,file,cb){
         cb(null,Date.now()+'-'+file.originalname)// Cn q name se va a guardar mi archivo(fecha exacta seg - name original)
