@@ -1,16 +1,14 @@
 import fs from 'fs'
 
-class Product{
-    constructor(title, price, thumbnail){
-        this.title = title
-        this.price = price
-        this.thumbnail = thumbnail
-    }
-}
-
 class Contenedor{
     constructor(fileName){
         this.fileName = fileName
+    }
+
+    readProd=async()=>{
+        let data = await fs.promises.readFile(this.fileName,'utf-8')
+            let products =  JSON.parse(data)
+            return products
     }
 
     save = async (obj)=>{
@@ -84,6 +82,8 @@ class Contenedor{
                     return {
                         id: product.id,
                         title: obj.title ? obj.title : product.title,
+                        descripion: obj.descripion ? obj.descripion : product.descripion,
+                        stock: obj.stock ? obj.stock : product.stock,
                         price: obj.price ? obj.price : product.price,
                         img: obj.img ? obj.img : product.img
                     }
@@ -114,18 +114,4 @@ class Contenedor{
     }
 
 }
-
-const contenedor1 = new Contenedor("./productos.json")
-
-// const producto1 = new Product("celular", 10000, "imagen")
-// const producto2 = new Product("zapatilas", 5000000, "gg")
-
-// contenedor1.save(producto2)
-// contenedor1.getById(3)
-// contenedor1.getAll()
-// contenedor1.deleteById(4)
-// contenedor1.deleteAll()
-
-// console.log(contenedor1.getAll())
-
 export default Contenedor;

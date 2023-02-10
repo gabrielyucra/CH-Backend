@@ -1,15 +1,11 @@
 import {Router} from 'express'
-import Contenedor from '../contenedor.js'
-import { uploader } from '../utils.js'
+import Contenedor from '../contenedores/contenedor.js'
+import __dirname, { uploader } from '../utils.js'
 
 const router = Router()
 
-let contenedor3 = new Contenedor("./productos.json")
-
-router.get('/gg', (req, res)=>{
-    res.render("ss")
-})
-
+const pathToFileP = __dirname + '/files/productos.json' 
+let contenedor3 = new Contenedor(pathToFileP)
 
 router.get('/',async (req,res)=>{   //-------------> DEVUELVE TODOS LOS PRODUCTOS
     let productos = await contenedor3.getAll()
@@ -31,11 +27,13 @@ router.get('/:id',async (req,res)=>{   //-------------> DEVUELVE 1 PRODUCTO SEGU
 })
 
 router.post('/',uploader.single("img"), async (req,res)=>{   //-------------> recibe y agrega un producto, y lo devuelve con su idasignado.
-    const {title, price, img} = req.body;
-    // if(!title || !price || !img) res.status(400).send({status:"error", error:"campos incompletos"})
+    const {title, description, stock, price, img} = req.body;
     const product = {
         title,
+        description,
+        stock,
         price,
+        code: Math.floor(Math.random()*9999),
         img
     }
     // console.log(req.file)
@@ -43,7 +41,7 @@ router.post('/',uploader.single("img"), async (req,res)=>{   //-------------> re
                     //HTTPS      + ://+ LOCALHOST O SERVER+8080 +   NOMBRE NUEVO DE ARCHIVO 
     product.img = newImage
     await contenedor3.save(product)
-    res.redirect('/');
+    // res.redirect('/');
     res.send({status:"success",payload:product});
 })
 
@@ -53,7 +51,6 @@ router.put('/:id',async (req,res)=>{   //-------------> recibe y actualiza un pr
 
     let result = await contenedor3.updateItem(objBody, id)
     res.send(result)
-    
 })
 
 router.delete('/:id',async (req,res)=>{   //-------------> elimina un producto según su id.

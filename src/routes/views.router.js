@@ -1,8 +1,10 @@
 import {Router} from 'express'
-import Contenedor from '../contenedor.js'
+import Contenedor from '../contenedores/contenedor.js'
+import __dirname from '../utils.js';
 const router = Router()
 
-let contenedor4 = new Contenedor("./productos.json");
+const pathToFileP =__dirname+"/files/productos.json"
+let contenedor4 = new Contenedor(pathToFileP);
 
 router.get('/productos',async (req, res)=>{
     let productos = await contenedor4.getAll()
