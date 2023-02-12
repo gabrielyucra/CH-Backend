@@ -16,5 +16,12 @@
     "title": "Globo terraqueo",
     "price": "2345",
     "img": "http://localhost:8080/img/1669096843742-globe-earth-geograhy-planet-school-256.webp"
+  },
+  {
+    "id": 4,
+    "title": "dormido",
+    "stock": "657",
+    "price": "678",
+    "img": "http://localhost:8080/img/1676157016109-_20171119_050856.JPG"
   }
 ]
