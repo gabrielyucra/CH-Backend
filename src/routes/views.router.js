@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import Contenedor from '../contenedores/contenedor.js'
+import Contenedor from '../daos/contenedor.js'
 import __dirname from '../utils.js';
 const router = Router()
 

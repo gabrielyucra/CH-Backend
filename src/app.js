@@ -4,10 +4,12 @@ import viewsRouter from './routes/views.router.js'
 import  __dirname  from './utils.js';
 import handlebars from 'express-handlebars'
 import cartRouter from './routes/carts.router.js';
+import { productManager, cartManager } from './daos/index.js';
+
 
 const app = express(); //inciar el aplicativo
 const server = app.listen(8080,()=>console.log("Te estoy escuchando MABEL")) //Poner al aplicativo a escuchar
-export const admin = false;
+export const admin = true;
 
 // Motor de plantillas
 app.engine('handlebars', handlebars.engine()) //Que motor va a registrar (nombre, motor correspondiente)

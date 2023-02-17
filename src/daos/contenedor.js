@@ -28,7 +28,7 @@ class Contenedor{
         }
     }
 
-    getById= async (id)=>{
+    getProductById= async (id)=>{
         // Object - Recibe un id y devuelve el objeto con ese id, o null si no está.
         try {
             let data = await fs.promises.readFile(this.fileName, 'utf-8')

@@ -1,7 +1,6 @@
 import { Router } from "express";
-import CartContenedor from "../contenedores/cartContenerdor.js";
-import { fechaHora } from "../contenedores/cartContenerdor.js";
-import { admin } from "../app.js";
+import CartContenedor from "../daos/cartContenerdor.js";
+import { fechaHora } from "../daos/cartContenerdor.js";
 
 const router = Router();
 const contenedorCarrito = new CartContenedor()

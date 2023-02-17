@@ -51,19 +51,17 @@ class CartContenedor {
         }
     }
 
-    createCart = async (fecha) => {
+    createCart = async () => {
         try{
-            if (fecha) {
                 const carts = await this.readFile()
                 const newCart = {
                     id: carts.length === 0 ? 1 : carts[carts.length - 1].id + 1,
-                    timestamp: fecha,
+                    timestamp: fechaHora(),
                     products: []
                 }
                 carts.push(newCart)
                 await fs.promises.writeFile(this.path, JSON.stringify(carts, null, '\t'))
                 return newCart
-            }
         }
         catch{
             console.log("no se pudo crear un nuevo carrito")

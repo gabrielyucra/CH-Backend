@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import Contenedor from '../contenedores/contenedor.js'
+import Contenedor from '../daos/contenedor.js'
 import __dirname, { uploader } from '../utils.js'
 import { admin } from '../app.js'
 const router = Router()
