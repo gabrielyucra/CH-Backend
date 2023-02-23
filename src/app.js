@@ -4,7 +4,6 @@ import viewsRouter from './routes/views.router.js'
 import  __dirname  from './utils.js';
 import handlebars from 'express-handlebars'
 import cartRouter from './routes/carts.router.js';
-import { productManager, cartManager } from './daos/index.js';
 
 
 const app = express(); //inciar el aplicativo

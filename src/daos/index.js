@@ -28,4 +28,4 @@ if (PERSISTENCIA === "FILESYSTEM") {
     })
 }
 
-export { productManager, cartManager} 
+export { productManager, cartManager, PERSISTENCIA} 

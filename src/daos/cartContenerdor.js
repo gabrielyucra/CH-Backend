@@ -32,7 +32,7 @@ class CartContenedor {
     }
     exists = async (id) => {
         let carts = await this.getCarts()
-        return carts.some(cart => cart.id === id)
+        return carts.some(cart => cart.id == id)
     }
 
     getCarts = () => {
@@ -42,7 +42,7 @@ class CartContenedor {
     getCartById = async (id) => {
         try{
             const carts = await this.readFile()
-            const cart = carts.find((cart) => cart.id === id)
+            const cart = carts.find((cart) => cart.id == id)
             id<carts.length ? cart : console.log("ID no encontrado")
             return cart
         }
@@ -72,9 +72,9 @@ class CartContenedor {
     cleanCartById = async (id) => {
         try{
             const carts = await this.readFile()
-            if (carts.find(cart => cart.id === id)) {
+            if (carts.find(cart => cart.id == id)) {
                 let newCart=carts.map(cart=>{
-                    if(cart.id === id){
+                    if(cart.id == id){
                         return{
                                 id: cart.id,
                                 timestamp: cart.timestamp,
@@ -105,7 +105,7 @@ class CartContenedor {
         let addedProduct;
 
         let newCarts = carts.map(cart => {
-            if (cart.id === id) {
+            if (cart.id == id) {
                 return addedProduct = {
                     id: cart.id,
                     timestamp: cart.timestamp,
@@ -124,7 +124,7 @@ class CartContenedor {
     deleteProduct = async (cid, pid) => {
             let carts = await this.readFile()
             let newProducts = carts.map(cart => {
-                if (cart.id === cid) {
+                if (cart.id == cid) {
                     let productos = []
 
                     cart.products.map(product => {

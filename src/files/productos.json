@@ -23,5 +23,12 @@
 		"stock": "657",
 		"price": "678",
 		"img": "http://localhost:8080/img/1676157016109-_20171119_050856.JPG"
+	},
+	{
+		"id": 5,
+		"title": "update",
+		"stock": "68",
+		"price": "68",
+		"img": "http://localhost:8080/img/1677100426103-FB_IMG_1475556321456.jpg"
 	}
 ]
